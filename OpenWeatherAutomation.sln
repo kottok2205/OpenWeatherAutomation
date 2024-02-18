@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherAutomation", "OpenWeatherAutomation\OpenWeatherAutomation.csproj", "{4DF56947-BA10-4BA9-8282-4FC38D3828BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{82251D32-D99E-4BD5-94BA-F0BA7E5D4423} = {82251D32-D99E-4BD5-94BA-F0BA7E5D4423}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PageObject", "PageObject\PageObject.csproj", "{E934B2C1-78AC-402B-BF4A-066D3F735FC8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{82251D32-D99E-4BD5-94BA-F0BA7E5D4423} = {82251D32-D99E-4BD5-94BA-F0BA7E5D4423}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseDriverService", "BaseDriverService\BaseDriverService.csproj", "{82251D32-D99E-4BD5-94BA-F0BA7E5D4423}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DF56947-BA10-4BA9-8282-4FC38D3828BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DF56947-BA10-4BA9-8282-4FC38D3828BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DF56947-BA10-4BA9-8282-4FC38D3828BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DF56947-BA10-4BA9-8282-4FC38D3828BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E934B2C1-78AC-402B-BF4A-066D3F735FC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E934B2C1-78AC-402B-BF4A-066D3F735FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E934B2C1-78AC-402B-BF4A-066D3F735FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E934B2C1-78AC-402B-BF4A-066D3F735FC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82251D32-D99E-4BD5-94BA-F0BA7E5D4423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82251D32-D99E-4BD5-94BA-F0BA7E5D4423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82251D32-D99E-4BD5-94BA-F0BA7E5D4423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82251D32-D99E-4BD5-94BA-F0BA7E5D4423}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91EE7C97-E774-4151-93D3-56FA995A511C}
+	EndGlobalSection
+EndGlobal
