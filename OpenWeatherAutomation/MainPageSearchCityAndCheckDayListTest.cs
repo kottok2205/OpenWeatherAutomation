@@ -1,18 +1,20 @@
-﻿using NUnit.Framework;
-using NUnit.Framework.Legacy;
+﻿using NUnit.Framework.Legacy;
 using PageObject;
 
 namespace OpenWeatherAutomation
 {
-    public class MainPageSearchCityAndCheckDayListTest : SetUpAndTearDown
+    [TestFixture]
+    public class MainPageSearchCityAndCheckDayListTest : BaseTest
     {
+        private static readonly string[] Cities = { "Kyiv", "Odessa", "Kharkiv" };
+
         [Test]
-        public void Test1()
+        [TestCaseSource(nameof(Cities))]
+        public void CheckingWeatherCities(string cityName)
         {
             MainPage mainPage = new MainPage();
             mainPage.WaitForPageLoadedOff(mainPage.waitingLoaderSelector);
-            mainPage.SearchInputText("Kyiv");
-            //mainPage.WaitForPageLoaded();
+            mainPage.SearchInputText(cityName);
             mainPage.SearchButtonClick();
             mainPage.WaitForPageLoadedOn(mainPage.dropDownMenuLocator);
             mainPage.DropDownMenuClick();

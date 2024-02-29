@@ -13,8 +13,6 @@ namespace PageObject
 
         public By waitingLoaderSelector = By.CssSelector(".owm-loader-container");
 
-        //public IWebElement waitingLoader => Driver.FindElement(waitingLoaderSelector);
-
         public void WaitForPageLoadedOff(By element)
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
