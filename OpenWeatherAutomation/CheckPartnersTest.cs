@@ -5,46 +5,53 @@ namespace OpenWeatherAutomation
     [TestFixture]
     public class CheckPartnersTest : BaseTest
     {
-        public static PartnersPage partnersPage;
-        public static HeaderSelection headerSelection;
+        private PartnersPage _partnersPage;
+        private HeaderSelection _headerSelection;
 
-        public static PartnersPage Partners()
+        public PartnersPage PartnersPage
         {
-            if (partnersPage == null)
+            get
             {
-                partnersPage = new PartnersPage();
+                if (_partnersPage == null)
+                {
+                    _partnersPage = new PartnersPage();
+                }
+                return _partnersPage;
             }
-            return partnersPage;
         }
-        public static HeaderSelection Header()
+
+        public HeaderSelection HeaderSelection
         {
-            if (headerSelection == null)
+            get
             {
-                headerSelection = new HeaderSelection();
+                if (_headerSelection == null)
+                {
+                    _headerSelection = new HeaderSelection();
+                }
+                return _headerSelection;
             }
-            return headerSelection;
         }
 
         [Test]
         public void CheckPython()
         {
-            Partners().WaitForPageLoadedOff(Partners().waitingLoaderSelector);
-            Header().OpenMenuItem("Partners");
+            PartnersPage.WaitForPageLoadedOff(PartnersPage.waitingLoaderSelector);
+            HeaderSelection.OpenMenuItem("Partners");
 
             //Check partner Python
-            Partners().PartnerClick(Partners().partnerPython);
-            Assert.That(Partners().PartnerCheck(Partners().pythonIdLocator));
+            PartnersPage.PartnerClick(PartnersPage.partnerPython);
+            Assert.That(PartnersPage.PartnerCheck(PartnersPage.pythonIdLocator));
         }
+
         [Test]
         public void CheckUbuntu()
         {
-            partnersPage.WaitForPageLoadedOff(partnersPage.waitingLoaderSelector);
-            Header().OpenMenuItem("Partners");
+            PartnersPage.WaitForPageLoadedOff(PartnersPage.waitingLoaderSelector);
+            HeaderSelection.OpenMenuItem("Partners");
 
             //Check partner Ubuntu
-            partnersPage.PartnerClick(partnersPage.partnerUbuntu);
-            Assert.That(partnersPage.PartnerCheck(partnersPage.pythonIdLocator));
+            PartnersPage.PartnerClick(PartnersPage.partnerUbuntu);
+            Assert.That(PartnersPage.PartnerCheck(PartnersPage.pythonIdLocator));
         }
     }
-
 }
