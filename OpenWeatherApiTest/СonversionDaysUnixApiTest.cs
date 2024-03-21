@@ -4,13 +4,10 @@ namespace OpenWeatherApiTest
 {
     public class ÑonversionDaysUnixApiTest : BaseTest
     {
-        [TestCase("city", "703448")]
-        [TestCase("city", "698740")]
-        [TestCase("city", "706483")]
         [Test]
-        public async Task ÑonversionDaysUnixTest(string category, string idCity)
+        public async Task ÑonversionDaysUnixTest()
         {
-            HttpResponseMessage response = await Client.GetAsync(baseUrl);
+            HttpResponseMessage response = await Client.GetAsync(baseUrl + requestUrl);
 
             ClassicAssert.IsTrue(response.IsSuccessStatusCode);
         }
