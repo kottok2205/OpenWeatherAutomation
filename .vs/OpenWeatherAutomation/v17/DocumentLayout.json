@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "D:\\VSProject\\OpenWeatherAutomation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4DF56947-BA10-4BA9-8282-4FC38D3828BB}|OpenWeatherAutomation\\OpenWeatherAutomation.csproj|d:\\vsproject\\openweatherautomation\\openweatherautomation\\checkpartnerstest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DF56947-BA10-4BA9-8282-4FC38D3828BB}|OpenWeatherAutomation\\OpenWeatherAutomation.csproj|solutionrelative:openweatherautomation\\checkpartnerstest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E61059D0-C879-4C5B-A2AE-A7460567673E}|OpenWeatherApiTest\\OpenWeatherApiTest.csproj|d:\\vsproject\\openweatherautomation\\openweatherapitest\\\u0441onversiondaysunixapitest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E61059D0-C879-4C5B-A2AE-A7460567673E}|OpenWeatherApiTest\\OpenWeatherApiTest.csproj|solutionrelative:openweatherapitest\\\u0441onversiondaysunixapitest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82251D32-D99E-4BD5-94BA-F0BA7E5D4423}|BaseDriverService\\BaseDriverService.csproj|d:\\vsproject\\openweatherautomation\\basedriverservice\\basehttpclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82251D32-D99E-4BD5-94BA-F0BA7E5D4423}|BaseDriverService\\BaseDriverService.csproj|solutionrelative:basedriverservice\\basehttpclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E61059D0-C879-4C5B-A2AE-A7460567673E}|OpenWeatherApiTest\\OpenWeatherApiTest.csproj|d:\\vsproject\\openweatherautomation\\openweatherapitest\\basetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E61059D0-C879-4C5B-A2AE-A7460567673E}|OpenWeatherApiTest\\OpenWeatherApiTest.csproj|solutionrelative:openweatherapitest\\basetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4DF56947-BA10-4BA9-8282-4FC38D3828BB}|OpenWeatherAutomation\\OpenWeatherAutomation.csproj|d:\\vsproject\\openweatherautomation\\openweatherautomation\\mainpagesearchcityandcheckdaylisttest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4DF56947-BA10-4BA9-8282-4FC38D3828BB}|OpenWeatherAutomation\\OpenWeatherAutomation.csproj|solutionrelative:openweatherautomation\\mainpagesearchcityandcheckdaylisttest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DF56947-BA10-4BA9-8282-4FC38D3828BB}|OpenWeatherAutomation\\OpenWeatherAutomation.csproj|d:\\vsproject\\openweatherautomation\\openweatherautomation\\checkpartnerstest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DF56947-BA10-4BA9-8282-4FC38D3828BB}|OpenWeatherAutomation\\OpenWeatherAutomation.csproj|solutionrelative:openweatherautomation\\checkpartnerstest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E934B2C1-78AC-402B-BF4A-066D3F735FC8}|PageObject\\PageObject.csproj|d:\\vsproject\\openweatherautomation\\pageobject\\headerselection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,11 +34,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "\u0421onversionDaysUnixApiTest.cs",
+              "DocumentMoniker": "D:\\VSProject\\OpenWeatherAutomation\\OpenWeatherApiTest\\\u0421onversionDaysUnixApiTest.cs",
+              "RelativeDocumentMoniker": "OpenWeatherApiTest\\\u0421onversionDaysUnixApiTest.cs",
+              "ToolTip": "D:\\VSProject\\OpenWeatherAutomation\\OpenWeatherApiTest\\\u0421onversionDaysUnixApiTest.cs*",
+              "RelativeToolTip": "OpenWeatherApiTest\\\u0421onversionDaysUnixApiTest.cs*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T14:57:50.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "BaseHttpClient.cs",
+              "DocumentMoniker": "D:\\VSProject\\OpenWeatherAutomation\\BaseDriverService\\BaseHttpClient.cs",
+              "RelativeDocumentMoniker": "BaseDriverService\\BaseHttpClient.cs",
+              "ToolTip": "D:\\VSProject\\OpenWeatherAutomation\\BaseDriverService\\BaseHttpClient.cs",
+              "RelativeToolTip": "BaseDriverService\\BaseHttpClient.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-21T09:26:13.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BaseTest.cs",
+              "DocumentMoniker": "D:\\VSProject\\OpenWeatherAutomation\\OpenWeatherApiTest\\BaseTest.cs",
+              "RelativeDocumentMoniker": "OpenWeatherApiTest\\BaseTest.cs",
+              "ToolTip": "D:\\VSProject\\OpenWeatherAutomation\\OpenWeatherApiTest\\BaseTest.cs",
+              "RelativeToolTip": "OpenWeatherApiTest\\BaseTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T14:59:02.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainPageSearchCityAndCheckDayListTest.cs",
               "DocumentMoniker": "D:\\VSProject\\OpenWeatherAutomation\\OpenWeatherAutomation\\MainPageSearchCityAndCheckDayListTest.cs",
               "RelativeDocumentMoniker": "OpenWeatherAutomation\\MainPageSearchCityAndCheckDayListTest.cs",
@@ -39,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "CheckPartnersTest.cs",
               "DocumentMoniker": "D:\\VSProject\\OpenWeatherAutomation\\OpenWeatherAutomation\\CheckPartnersTest.cs",
               "RelativeDocumentMoniker": "OpenWeatherAutomation\\CheckPartnersTest.cs",
@@ -52,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "HeaderSelection.cs",
               "DocumentMoniker": "D:\\VSProject\\OpenWeatherAutomation\\PageObject\\HeaderSelection.cs",
               "RelativeDocumentMoniker": "PageObject\\HeaderSelection.cs",
