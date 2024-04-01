@@ -1,4 +1,8 @@
-﻿namespace BaseDriverService
+﻿using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace BaseDriverService
 {
     public class BaseHttpClient
     {
@@ -10,7 +14,11 @@
         {
             if (client == null)
             {
-                client = new HttpClient();
+                var httpClientHandler = new HttpClientHandler();
+                httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
+                client = new HttpClient(httpClientHandler) { BaseAddress = new Uri("https://openweathermap.org/") };
+                
+                System.Net.ServicePointManager.SecurityProtocol =  SecurityProtocolType.Tls;
             }
             return client;
         }

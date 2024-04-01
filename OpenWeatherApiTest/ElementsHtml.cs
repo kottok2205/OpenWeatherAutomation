@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
+﻿using HtmlAgilityPack;
 
 namespace OpenWeatherApiTest
 {
@@ -7,23 +6,22 @@ namespace OpenWeatherApiTest
     {
         public string[] dateArrayHtml()
         {
-            var options = new ChromeOptions();
-            options.AddArgument("--headless");
-
-            var driver = new ChromeDriver(options);
-
-            driver.Navigate().GoToUrl("https://openweathermap.org/city/703448");
+            var url = "https://openweathermap.org/city/703448";
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument doc = web.Load(url);
 
             string[] dateArray = new string[8];
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            var nodes = doc.DocumentNode.SelectNodes("//*[@id='weather-widget']/div[2]/div[2]/div[2]/ul/li/span");
 
-            for (int i = 0, j = 1; i < 8; i++, j++)
+            if (nodes != null)
             {
-                var dayElement = driver.FindElement(By.XPath(@$"//*[@id=""weather-widget""]/div[2]/div[2]/div[2]/ul/li[{j}]/span"));
-                var dateText = dayElement.Text;
-                dateArray[i] = dateText;
+                for (int i = 0; i < 8 && i < nodes.Count; i++)
+                {
+                    dateArray[i] = nodes[i].InnerText.Trim();
+                }
             }
+
             return dateArray;
         }
     }
