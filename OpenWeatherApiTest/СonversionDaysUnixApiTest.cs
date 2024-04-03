@@ -16,7 +16,6 @@ namespace OpenWeatherApiTest
             ClassicAssert.IsTrue(response.IsSuccessStatusCode);
 
             string responseData = await response.Content.ReadAsStringAsync();
-            System.Console.WriteLine(responseData);
             var normalizedExpected = Regex.Replace(responseData, @"\s+", "");
 
             ClassicAssert.AreEqual(elementsJson.dateArrayJson(normalizedExpected), elementsHtml.dateArrayHtml());
