@@ -16,7 +16,7 @@ namespace BaseDriverService
             {
                 var httpClientHandler = new HttpClientHandler();
                 httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
-                client = new HttpClient(httpClientHandler) { BaseAddress = new Uri("http://openweathermap.org/") };
+                client = new HttpClient(httpClientHandler) { BaseAddress = new Uri("https://openweathermap.org/") };
                 
                 System.Net.ServicePointManager.SecurityProtocol =  SecurityProtocolType.Tls;
             }
