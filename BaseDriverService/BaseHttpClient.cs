@@ -1,8 +1,4 @@
-﻿using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using static System.Net.Mime.MediaTypeNames;
-
-namespace BaseDriverService
+﻿namespace BaseDriverService
 {
     public class BaseHttpClient
     {
@@ -14,11 +10,7 @@ namespace BaseDriverService
         {
             if (client == null)
             {
-                //var httpClientHandler = new HttpClientHandler();
-                //httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
-                client = new HttpClient(/*httpClientHandler*/) /*{ BaseAddress = new Uri("http://openweathermap.org/") }*/;
-                
-                //System.Net.ServicePointManager.SecurityProtocol =  SecurityProtocolType.Tls;
+                client = new HttpClient();
             }
             return client;
         }
