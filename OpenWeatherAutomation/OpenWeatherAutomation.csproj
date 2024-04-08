@@ -22,7 +22,7 @@
     </PackageReference>
     <PackageReference Include="NUnit.ConsoleRunner" Version="*" />
     <PackageReference Include="NUnit3TestAdapter" Version="*" />
-    <PackageReference Include="Selenium.Support" Version="4.19.0" />
+    <PackageReference Include="Selenium.Support" Version="*" />
     <PackageReference Include="Selenium.WebDriver" Version="*" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="*" />
   </ItemGroup>

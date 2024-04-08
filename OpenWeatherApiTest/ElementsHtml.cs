@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 
 namespace OpenWeatherApiTest
 {
@@ -16,8 +14,8 @@ namespace OpenWeatherApiTest
 
             for (int i = 0, j = 1; i < 8; i++, j++)
             {
-                var dayElement = doc.DocumentNode.SelectNodes(@$"//*[@id=""weather-widget""]/div[2]/div[2]/div[2]/ul/li[{j}]/span");
-                dateArray[i] = dayElement[i].InnerText.Trim();
+                var dayElement = doc.DocumentNode.SelectSingleNode(@$"//*[@id=""weather-widget""]/div[3]/div[2]/div[2]/ul/li[{j}]/span");
+                dateArray[i] = dayElement.InnerText;
             }
 
             return dateArray;

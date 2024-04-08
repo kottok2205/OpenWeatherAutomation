@@ -11,7 +11,7 @@ namespace OpenWeatherApiTest
             ElementsJson elementsJson = new ElementsJson();
             ElementsHtml elementsHtml = new ElementsHtml();
 
-            HttpResponseMessage response = await Client.GetAsync(requestUrl);
+            HttpResponseMessage response = await Client.GetAsync(baseUrl + daysUnixUrl);
 
             ClassicAssert.IsTrue(response.IsSuccessStatusCode);
 

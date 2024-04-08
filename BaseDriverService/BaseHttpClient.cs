@@ -14,11 +14,11 @@ namespace BaseDriverService
         {
             if (client == null)
             {
-                var httpClientHandler = new HttpClientHandler();
-                httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
-                client = new HttpClient(httpClientHandler) { BaseAddress = new Uri("https://openweathermap.org/") };
+                //var httpClientHandler = new HttpClientHandler();
+                //httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
+                client = new HttpClient(/*httpClientHandler*/) /*{ BaseAddress = new Uri("http://openweathermap.org/") }*/;
                 
-                System.Net.ServicePointManager.SecurityProtocol =  SecurityProtocolType.Tls;
+                //System.Net.ServicePointManager.SecurityProtocol =  SecurityProtocolType.Tls;
             }
             return client;
         }
