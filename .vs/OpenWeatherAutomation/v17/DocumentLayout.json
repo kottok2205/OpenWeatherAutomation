@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "D:\\VSProject\\OpenWeatherAutomation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E934B2C1-78AC-402B-BF4A-066D3F735FC8}|PageObject\\PageObject.csproj|d:\\vsproject\\openweatherautomation\\pageobject\\uihtmlelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E934B2C1-78AC-402B-BF4A-066D3F735FC8}|PageObject\\PageObject.csproj|solutionrelative:pageobject\\uihtmlelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DF56947-BA10-4BA9-8282-4FC38D3828BB}|OpenWeatherAutomation\\OpenWeatherAutomation.csproj|d:\\vsproject\\openweatherautomation\\openweatherautomation\\uiconversiondaysunixtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DF56947-BA10-4BA9-8282-4FC38D3828BB}|OpenWeatherAutomation\\OpenWeatherAutomation.csproj|solutionrelative:openweatherautomation\\uiconversiondaysunixtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E61059D0-C879-4C5B-A2AE-A7460567673E}|OpenWeatherApiTest\\OpenWeatherApiTest.csproj|d:\\vsproject\\openweatherautomation\\openweatherapitest\\\u0441onversiondaysunixapitest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E61059D0-C879-4C5B-A2AE-A7460567673E}|OpenWeatherApiTest\\OpenWeatherApiTest.csproj|solutionrelative:openweatherapitest\\\u0441onversiondaysunixapitest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E934B2C1-78AC-402B-BF4A-066D3F735FC8}|PageObject\\PageObject.csproj|d:\\vsproject\\openweatherautomation\\pageobject\\uijsonelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E934B2C1-78AC-402B-BF4A-066D3F735FC8}|PageObject\\PageObject.csproj|solutionrelative:pageobject\\uijsonelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E934B2C1-78AC-402B-BF4A-066D3F735FC8}|PageObject\\PageObject.csproj|d:\\vsproject\\openweatherautomation\\pageobject\\basepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E934B2C1-78AC-402B-BF4A-066D3F735FC8}|PageObject\\PageObject.csproj|solutionrelative:pageobject\\basepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4DF56947-BA10-4BA9-8282-4FC38D3828BB}|OpenWeatherAutomation\\OpenWeatherAutomation.csproj|d:\\vsproject\\openweatherautomation\\openweatherautomation\\uiconversiondaysunixtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DF56947-BA10-4BA9-8282-4FC38D3828BB}|OpenWeatherAutomation\\OpenWeatherAutomation.csproj|solutionrelative:openweatherautomation\\uiconversiondaysunixtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,53 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UiHtmlElement.cs",
-              "DocumentMoniker": "D:\\VSProject\\OpenWeatherAutomation\\PageObject\\UiHtmlElement.cs",
-              "RelativeDocumentMoniker": "PageObject\\UiHtmlElement.cs",
-              "ToolTip": "D:\\VSProject\\OpenWeatherAutomation\\PageObject\\UiHtmlElement.cs",
-              "RelativeToolTip": "PageObject\\UiHtmlElement.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-08T14:15:15.939Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "\u0421onversionDaysUnixApiTest.cs",
-              "DocumentMoniker": "D:\\VSProject\\OpenWeatherAutomation\\OpenWeatherApiTest\\\u0421onversionDaysUnixApiTest.cs",
-              "RelativeDocumentMoniker": "OpenWeatherApiTest\\\u0421onversionDaysUnixApiTest.cs",
-              "ToolTip": "D:\\VSProject\\OpenWeatherAutomation\\OpenWeatherApiTest\\\u0421onversionDaysUnixApiTest.cs",
-              "RelativeToolTip": "OpenWeatherApiTest\\\u0421onversionDaysUnixApiTest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA7AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-08T13:03:38.339Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "UiJsonElement.cs",
               "DocumentMoniker": "D:\\VSProject\\OpenWeatherAutomation\\PageObject\\UiJsonElement.cs",
               "RelativeDocumentMoniker": "PageObject\\UiJsonElement.cs",
               "ToolTip": "D:\\VSProject\\OpenWeatherAutomation\\PageObject\\UiJsonElement.cs",
               "RelativeToolTip": "PageObject\\UiJsonElement.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAUwAoAAAALAAAA",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwAkAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-08T12:26:16.691Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BasePage.cs",
-              "DocumentMoniker": "D:\\VSProject\\OpenWeatherAutomation\\PageObject\\BasePage.cs",
-              "RelativeDocumentMoniker": "PageObject\\BasePage.cs",
-              "ToolTip": "D:\\VSProject\\OpenWeatherAutomation\\PageObject\\BasePage.cs",
-              "RelativeToolTip": "PageObject\\BasePage.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwA0AAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-08T11:18:10.099Z",
               "EditorCaption": ""
             },
             {
@@ -92,10 +41,9 @@
               "RelativeDocumentMoniker": "OpenWeatherAutomation\\UiConversionDaysUnixTest.cs",
               "ToolTip": "D:\\VSProject\\OpenWeatherAutomation\\OpenWeatherAutomation\\UiConversionDaysUnixTest.cs",
               "RelativeToolTip": "OpenWeatherAutomation\\UiConversionDaysUnixTest.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAAAA4AAACfAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-08T10:57:44.796Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-08T10:57:44.796Z"
             }
           ]
         }
