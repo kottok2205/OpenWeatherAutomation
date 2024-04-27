@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.DevTools.V121.Accessibility;
-
+﻿
 namespace PageObject
 {
     public class UiJsonElement : BasePage
