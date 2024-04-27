@@ -11,9 +11,12 @@ namespace BaseDriverService
 
         public static IWebDriver GetInstance()
         {
+            var options = new ChromeOptions();
+            options.AddArgument("--headless");
+            options.AddArgument("--window-size=1920,1080");
             if (driver == null)
             {
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(options);
             }
             return driver;
         }
