@@ -5,8 +5,15 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: ls /home/runner/work/OpenWeatherAutomation/OpenWeatherAutomation/
-      - run: cd
-      - run: cd /home/runner/work/OpenWeatherAutomation/
-      - run: pwd
-      - run: ls
+      - uses: actions/checkout@v4
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - name: Run .NET clean
+        run: dotnet clean
+      - name: Run .NET build
+        run: dotnet build
+      - name: Run .NET Test
+        run: dotnet test
+        
