@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: ls
-      - run: cd /home/runner/work/OpenWeatherAutomation/
+      - run: cd repo/OpenWeatherAutomation
       - run: pwd
       - run: ls
