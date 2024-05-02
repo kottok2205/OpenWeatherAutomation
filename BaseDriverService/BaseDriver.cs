@@ -5,11 +5,11 @@ namespace BaseDriverService
 {
     public class BaseDriver
     {
-        public static IWebDriver driver;
+        public static ChromeDriver driver;
 
         private BaseDriver() { }
 
-        public static IWebDriver GetInstance()
+        public static ChromeDriver GetInstance()
         {
             var options = new ChromeOptions();
             options.AddArgument("--headless");

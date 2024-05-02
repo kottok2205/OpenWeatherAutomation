@@ -1,71 +1,74 @@
-﻿
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools;
+using Network = OpenQA.Selenium.DevTools.V124.Network;
+using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V124.DevToolsSessionDomains;
+using System.Globalization;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+
 namespace PageObject
 {
     public class UiJsonElement : BasePage
     {
-        //public static void SelDriver()
-        //{
-        //    var service = ChromeDriverService.CreateDefaultService();
-        //    service.LogPath = AppDomain.CurrentDomain.BaseDirectory + "chromedriver.log";
-        //    service.EnableVerboseLogging = true;
+        //static ChromeDriver driver = new ChromeDriver();
+        static IDevTools devTools = Driver;
+        static IDevToolsSession session = devTools.GetDevToolsSession();
+        static DevToolsSessionDomains domains = session.GetVersionSpecificDomains<DevToolsSessionDomains>();
+        static string jsonUrl = null;
 
-        //    var options = new ChromeOptions();
+        public async Task TestAsync()
+        {
+            var contentType = new List<string>();
+            //string jsonUrl = null;
 
-        //    var webDriver = new ChromeDriver(service, options);
+            domains.Network.ResponseReceived += (sender, e) =>
+            {
+                if (e.Response.Url.Contains("onecall?"))
+                {
+                    // Виводимо URL запиту
+                    Console.WriteLine("URL: " + e.Response.Url);
+                    jsonUrl = e.Response.Url;
+                }
+            };
 
-        //    var devToolsSession = webDriver.GetDevToolsSession();
-        //    devToolsSession.GetVersionSpecificDomains<NetworkDomain>(out var network).Enable(new EnableCommandSettings());
-        //}
+            await domains.Network.Enable(new Network.EnableCommandSettings());
 
+            Driver.Navigate().GoToUrl("https://openweathermap.org/city/703448");
+            await Task.Delay(5000);
 
+        }
+        public string[] dateArrayJson()
+        {
+            TestAsync();
+            Thread.Sleep(10000);
 
+            Driver.Navigate().GoToUrl(jsonUrl);
 
+            string responseData = Driver.FindElement(By.TagName("body")).Text;
 
+            var normalizedExpected = Regex.Replace(responseData, @"\s+", "");
 
+            CultureInfo culture = new CultureInfo("en-US");
 
+            JsonDocument jsonDoc = JsonDocument.Parse(normalizedExpected);
 
+            var root = jsonDoc.RootElement;
+            var dailyArray = root.GetProperty("daily");
+            JsonElement[] dtArray = dailyArray.EnumerateArray().Select(x => x.GetProperty("dt")).ToArray();
 
+            string[] dateArray = new string[8];
 
+            for (int i = dtArray.Length - 8, j = 0; i < dtArray.Length; i++, j++)
+            {
+                long unixTime = dtArray[i].GetInt64();
 
+                var dateTime = DateTimeOffset.FromUnixTimeSeconds(unixTime).UtcDateTime;
 
-
-
-
-
-
-
-
-
-
-
-        //public string[] dateArrayJson()
-        //{
-        //    Driver.Navigate().GoToUrl("https://openweathermap.org/data/2.5/onecall?lat=46.4775&lon=30.7326&units=metric&appid=439d4b804bc8187953eb36d2a8c26a02");
-
-        //    string responseData = Driver.FindElement(By.TagName("body")).Text;
-
-        //    var normalizedExpected = Regex.Replace(responseData, @"\s+", "");
-
-        //    CultureInfo culture = new CultureInfo("en-US");
-
-        //    JsonDocument jsonDoc = JsonDocument.Parse(normalizedExpected);
-
-        //    var root = jsonDoc.RootElement;
-        //    var dailyArray = root.GetProperty("daily");
-        //    JsonElement[] dtArray = dailyArray.EnumerateArray().Select(x => x.GetProperty("dt")).ToArray();
-
-        //    string[] dateArray = new string[8];
-
-        //    for (int i = dtArray.Length - 8, j = 0; i < dtArray.Length; i++, j++)
-        //    {
-        //        long unixTime = dtArray[i].GetInt64();
-
-        //        var dateTime = DateTimeOffset.FromUnixTimeSeconds(unixTime).UtcDateTime;
-
-        //        var formattedDate = dateTime.ToString("ddd, MMM dd", culture);
-        //        dateArray[j] = formattedDate;
-        //    }
-        //    return dateArray;
-        //}
+                var formattedDate = dateTime.ToString("ddd, MMM dd", culture);
+                dateArray[j] = formattedDate;
+            }
+            return dateArray;
+        }
     }
 }
+

@@ -1,5 +1,6 @@
 ﻿using BaseDriverService;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -9,7 +10,7 @@ namespace PageObject
     public class BasePage
     {
 
-        protected IWebDriver Driver => BaseDriver.GetInstance();
+        protected static ChromeDriver Driver => BaseDriver.GetInstance();
 
         public By waitingLoaderSelector = By.CssSelector(".owm-loader-container");
 
