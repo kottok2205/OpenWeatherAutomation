@@ -1,6 +1,10 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+
+on:
+  push:
+    branches:
+      - unit
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -16,4 +20,25 @@ jobs:
         run: dotnet build
       - name: Run .NET Test
         run: dotnet test
-        
+
+  auto-merge-to-master:
+    needs: Explore-GitHub-Actions
+    if: github.ref == 'refs/heads/unit' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: 'master'
+      - name: Merge unit branch
+        run: |
+          git config --global user.name kottok2205
+          git config --global user.email tarasyuk222001@gmail.com
+          git fetch origin unit
+          git merge origin/unit --no-ff --no-commit
+          git commit -m "Auto-merge unit into master 🚀"
+      - name: Push changes to master
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.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 }}
+          branch: 'master'
