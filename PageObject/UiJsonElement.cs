@@ -5,70 +5,65 @@ using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V124.DevToolsSessionDoma
 using System.Globalization;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace PageObject
 {
     public class UiJsonElement : BasePage
     {
-        //static ChromeDriver driver = new ChromeDriver();
-        static IDevTools devTools = Driver;
-        static IDevToolsSession session = devTools.GetDevToolsSession();
-        static DevToolsSessionDomains domains = session.GetVersionSpecificDomains<DevToolsSessionDomains>();
-        static string jsonUrl = null;
+        private IDevTools devTools;
+        private DevToolsSessionDomains domains;
 
-        public async Task TestAsync()
+        public UiJsonElement()
         {
-            var contentType = new List<string>();
-            //string jsonUrl = null;
+            this.devTools = Driver as IDevTools;
+            this.domains = devTools.GetDevToolsSession().GetVersionSpecificDomains<DevToolsSessionDomains>();
+        }
 
+        public async Task<string[]> GetDateArrayFromJsonAsync()
+        {
+            string jsonUrl = await FetchJsonUrlAsync();
+            if (string.IsNullOrEmpty(jsonUrl))
+            {
+                throw new InvalidOperationException("JSON URL not found.");
+            }
+
+            Driver.Navigate().GoToUrl(jsonUrl);
+            //await Task.Delay(5000); // Wait for page to load completely
+
+            string responseData = Driver.FindElement(By.TagName("body")).Text;
+            responseData = Regex.Replace(responseData, @"\s+", "");
+
+            return ExtractDatesFromJson(responseData);
+        }
+
+        private async Task<string> FetchJsonUrlAsync()
+        {
+            string jsonUrl = null;
+            await domains.Network.Enable(new Network.EnableCommandSettings());
+
+            var responseListener = new TaskCompletionSource<string>();
             domains.Network.ResponseReceived += (sender, e) =>
             {
                 if (e.Response.Url.Contains("onecall?"))
                 {
-                    // Виводимо URL запиту
-                    Console.WriteLine("URL: " + e.Response.Url);
-                    jsonUrl = e.Response.Url;
+                    responseListener.TrySetResult(e.Response.Url);
                 }
             };
 
-            await domains.Network.Enable(new Network.EnableCommandSettings());
-
             Driver.Navigate().GoToUrl("https://openweathermap.org/city/703448");
-            await Task.Delay(5000);
-
+            //await Task.Delay(5000); // Ensure the network request is captured
+            return await responseListener.Task;
         }
-        public string[] dateArrayJson()
+
+        private string[] ExtractDatesFromJson(string jsonData)
         {
-            TestAsync();
-            Thread.Sleep(10000);
-
-            Driver.Navigate().GoToUrl(jsonUrl);
-
-            string responseData = Driver.FindElement(By.TagName("body")).Text;
-
-            var normalizedExpected = Regex.Replace(responseData, @"\s+", "");
-
-            CultureInfo culture = new CultureInfo("en-US");
-
-            JsonDocument jsonDoc = JsonDocument.Parse(normalizedExpected);
-
-            var root = jsonDoc.RootElement;
-            var dailyArray = root.GetProperty("daily");
-            JsonElement[] dtArray = dailyArray.EnumerateArray().Select(x => x.GetProperty("dt")).ToArray();
-
-            string[] dateArray = new string[8];
-
-            for (int i = dtArray.Length - 8, j = 0; i < dtArray.Length; i++, j++)
-            {
-                long unixTime = dtArray[i].GetInt64();
-
-                var dateTime = DateTimeOffset.FromUnixTimeSeconds(unixTime).UtcDateTime;
-
-                var formattedDate = dateTime.ToString("ddd, MMM dd", culture);
-                dateArray[j] = formattedDate;
-            }
-            return dateArray;
+            JsonDocument jsonDoc = JsonDocument.Parse(jsonData);
+            var dailyArray = jsonDoc.RootElement.GetProperty("daily");
+            return dailyArray.EnumerateArray()
+                             .Select(x => x.GetProperty("dt").GetInt64())
+                             .Select(unixTime => DateTimeOffset.FromUnixTimeSeconds(unixTime).UtcDateTime.ToString("ddd, MMM dd", new CultureInfo("en-US")))
+                             .ToArray();
         }
     }
 }
-
