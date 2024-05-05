@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Unit Tests
 
 on:
   push:
@@ -6,39 +6,30 @@ on:
       - unit
 
 jobs:
-  Explore-GitHub-Actions:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup dotnet
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
-      - name: Run .NET clean
-        run: dotnet clean
-      - name: Run .NET build
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
         run: dotnet build
-      - name: Run .NET Test
+
+      - name: Run tests
         run: dotnet test
 
-  auto-merge-to-master:
-    needs: Explore-GitHub-Actions
-    if: github.ref == 'refs/heads/unit' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout master branch
-        uses: actions/checkout@v4
-        with:
-          ref: 'master'
-      - name: Merge unit branch
+      - name: Merge with master
+        if: success()
         run: |
-          git config --global user.name kottok2205
-          git config --global user.email tarasyuk222001@gmail.com
-          git fetch origin unit
-          git merge origin/unit --no-ff --no-commit
-          git commit -m "Auto-merge unit into master 🚀"
-      - name: Push changes to master
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.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 }}
-          branch: 'master'
+          git checkout master
+          git merge --no-ff ${{ github.ref }}
+          git push origin master
