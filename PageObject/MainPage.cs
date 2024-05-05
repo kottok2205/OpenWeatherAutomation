@@ -5,7 +5,7 @@ namespace PageObject
     public class MainPage : BasePage
     {
         private By searchInputLocator = By.CssSelector(".search-container > input");
-        private By searchButtonLocatot = By.CssSelector(".button-round");
+        public By searchButtonLocatot = By.CssSelector(".button-round");
         private By dayListLocator = By.CssSelector(".day-list");
         public By dropDownMenuLocator = By.CssSelector(".search-dropdown-menu > li:nth-child(1)");
 

@@ -15,6 +15,7 @@ namespace OpenWeatherAutomation
             MainPage mainPage = new MainPage();
             mainPage.WaitForPageLoadedOff(mainPage.waitingLoaderSelector);
             mainPage.SearchInputText(cityName);
+            mainPage.WaitForButtonClickable(mainPage.searchButtonLocatot);
             mainPage.SearchButtonClick();
             mainPage.WaitForPageLoadedOn(mainPage.dropDownMenuLocator);
             mainPage.DropDownMenuClick();
