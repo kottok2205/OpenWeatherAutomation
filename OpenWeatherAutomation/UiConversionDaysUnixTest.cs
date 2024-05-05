@@ -6,13 +6,15 @@ namespace OpenWeatherAutomation
     class UiConversionDaysUnixTest : BaseTest
     {
         [Test]
-        public void ConversionUnix()
+        public async Task ConversionUnixTest()
         {
-            UiJsonElement elementsJson = new UiJsonElement();
-            UiHtmlElement elementsHtml = new UiHtmlElement();
+            var elementsJson = new UiJsonElement();
+            var elementsHtml = new UiHtmlElement();
 
-            ClassicAssert.AreEqual(elementsJson.dateArrayJson(), elementsHtml.dateArrayHtml());
+            var jsonDates = await elementsJson.GetDateArrayFromJsonAsync();
+            var htmlDates = elementsHtml.GetDateArrayFromHtml();
 
+            ClassicAssert.AreEqual(jsonDates, htmlDates);
         }
     }
 }

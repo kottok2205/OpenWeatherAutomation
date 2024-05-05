@@ -4,21 +4,16 @@ namespace PageObject
 {
     public class UiHtmlElement : BasePage
     {
-        public string[] dateArrayHtml()
+        public string[] GetDateArrayFromHtml()
         {
             Driver.Navigate().GoToUrl("https://openweathermap.org/city/698740");
+            WaitForPageLoadedOn(By.XPath(@$"//*[@id=""weather-widget""]/div[3]/div[2]/div[2]/ul/li[1]/span")); // Assumes this is implemented in BasePage
 
-            string[] dateArray = new string[8];
-
-            WaitForPageLoadedOn(By.XPath(@$"//*[@id=""weather-widget""]/div[3]/div[2]/div[2]/ul/li[1]/span"));
-
-            for (int i = 0, j = 1; i < 8; i++, j++)
+            return Enumerable.Range(1, 8).Select(i =>
             {
-                var dayElement = Driver.FindElement(By.XPath(@$"//*[@id=""weather-widget""]/div[3]/div[2]/div[2]/ul/li[{j}]/span"));
-                var dateText = dayElement.Text;
-                dateArray[i] = dateText;
-            }
-            return dateArray;
+                var dayElement = Driver.FindElement(By.XPath($"//*[@id='weather-widget']/div[3]/div[2]/div[2]/ul/li[{i}]/span"));
+                return dayElement.Text;
+            }).ToArray();
         }
     }
 }

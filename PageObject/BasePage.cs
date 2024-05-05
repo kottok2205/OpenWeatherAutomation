@@ -24,6 +24,11 @@ namespace PageObject
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(element));
         }
+        public void WaitForButtonClickable(By element)
+        {
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementToBeClickable(element));
+        }
         public void Scrolling(IWebElement element)
         {
             WheelInputDevice.ScrollOrigin scroll = new WheelInputDevice.ScrollOrigin
