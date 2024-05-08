@@ -8,6 +8,9 @@ on:
 jobs:
   test-and-merge:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        TestOpenWeatherProject: [OpenWeatherAutomation, OpenWeatherApiTest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,10 +22,10 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: cd project "OpenWeatherAutomation"
+      - name: Clean dotnet "OpenWeatherAutomation"
         run: |
           cd OpenWeatherAutomation
-          ls
+          dotnet clean ${{matrix.TestOpenWeatherProject}}.csproj
         
       - name: Clean dotnet project
         run: ls
