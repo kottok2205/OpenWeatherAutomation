@@ -24,7 +24,7 @@ jobs:
 
       - name: Clean dotnet "OpenWeatherAutomation"
         run: |
-          cd OpenWeatherAutomation
+          cd ${{matrix.TestOpenWeatherProject}}
           dotnet clean ${{matrix.TestOpenWeatherProject}}.csproj
         
       - name: Clean dotnet project
