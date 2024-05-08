@@ -19,5 +19,8 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: ls check
-        run: ls
+      - name: cd project "OpenWeatherAutomation"
+        run: cd OpenWeatherAutomation
+        
+      - name: Clean dotnet project
+      - run: dotnet clean OpenWeatherAutomation.csproj
