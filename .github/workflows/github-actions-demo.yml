@@ -20,7 +20,9 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: cd project "OpenWeatherAutomation"
-        run: cd ..
+        run: |
+          cd OpenWeatherAutomation
+          ls
         
       - name: Clean dotnet project
         run: ls
