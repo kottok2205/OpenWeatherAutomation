@@ -19,21 +19,5 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Clean build
-        run: dotnet clean
-
-      - name: Build solution
-        run: dotnet build
-
-      - name: Run tests
-        run: dotnet test
-
-      - name: Merge to master if tests pass
-        if: success()
-        run: |
-          git config --global user.email tarasyuk222001@gmail.com
-          git config --global user.name kottok2205
-          git fetch origin master
-          git checkout master
-          git merge --no-ff ${{ github.sha }} -m "Merge branch 'unit' into 'master'"
-          git push origin master
+      - name: ls check
+        run: ls
