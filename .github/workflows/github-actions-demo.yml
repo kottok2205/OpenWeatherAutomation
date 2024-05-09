@@ -30,12 +30,12 @@ jobs:
       - name: Restore dotnet project
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
-          dotnet restore ${{matrix.TestOpenWeatherProject}}.csproj
+          dotnet restore
       - name: Build dotnet project
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
-          dotnet build ${{matrix.TestOpenWeatherProject}}.csproj --no-restore
+          dotnet build --no-restore
       - name: Publish dotnet project
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
-          dotnet publish ${{matrix.TestOpenWeatherProject}}.csproj --no-build --artifacts-path ./output
+          dotnet publish --no-build --artifacts-path ./output
