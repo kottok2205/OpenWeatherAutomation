@@ -40,3 +40,4 @@ jobs:
           cd ${{matrix.TestOpenWeatherProject}}
           ls
           cd obj
+          ls
