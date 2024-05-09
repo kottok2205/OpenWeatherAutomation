@@ -8,32 +8,34 @@ on:
 jobs:
   test-and-merge:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        TestOpenWeatherProject: [OpenWeatherAutomation, OpenWeatherApiTest]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Для виконання команди checkout на інші гілки
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
 
-      - name: Clean build
-        run: dotnet clean
-
-      - name: Build solution
-        run: dotnet build
-
-      - name: Run tests
-        run: dotnet test
-
-      - name: Merge to master if tests pass
-        if: success()
+      - name: Clean dotnet project
         run: |
-          git config --global user.email tarasyuk222001@gmail.com
-          git config --global user.name kottok2205
-          git fetch origin master
-          git checkout master
-          git merge --no-ff ${{ github.sha }} -m "Merge branch 'unit' into 'master'"
-          git push origin master
+          cd ${{matrix.TestOpenWeatherProject}}
+          dotnet clean ${{matrix.TestOpenWeatherProject}}.csproj
+        
+      - name: Restore dotnet project
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          dotnet restore ${{matrix.TestOpenWeatherProject}}.csproj
+      - name: Build dotnet project
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          dotnet build ${{matrix.TestOpenWeatherProject}}.csproj --no-restore
+      - name: Publish dotnet project
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          dotnet publish ${{matrix.TestOpenWeatherProject}}.csproj --no-build --artifacts-path ./output
