@@ -39,3 +39,4 @@ jobs:
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
           ls
+          cd obj
