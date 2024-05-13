@@ -41,3 +41,4 @@ jobs:
           ls
           cd obj
           ls
+          dotnet publish --no-build --artifacts-path ./output
