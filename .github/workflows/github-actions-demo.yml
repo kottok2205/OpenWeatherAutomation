@@ -34,7 +34,7 @@ jobs:
       - name: Build dotnet project
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
-          dotnet build ${{matrix.TestOpenWeatherProject}}.csproj --no-restore
+          dotnet build ${{matrix.TestOpenWeatherProject}}.csproj --no-restore --configuration Release
       - name: Publish dotnet project
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
