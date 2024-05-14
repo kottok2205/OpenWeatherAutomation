@@ -22,18 +22,24 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Clean and Restore dotnet project
+      - name: Clean dotnet project
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
           dotnet clean ${{matrix.TestOpenWeatherProject}}.csproj
+        
+      - name: Restore dotnet project
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
           dotnet restore ${{matrix.TestOpenWeatherProject}}.csproj
-
       - name: Build dotnet project
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
           dotnet build ${{matrix.TestOpenWeatherProject}}.csproj --no-restore
-
       - name: Publish dotnet project
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
-          dotnet publish --no-build --output ./output
+          ls
+          cd obj
+          ls
+          cd ..
+          dotnet publish --no-build --artifacts-path ./output
