@@ -21,6 +21,8 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
+      - name: Install zip
+        run: sudo apt-get install zip -y
 
       - name: Clean dotnet project
         run: |
@@ -38,8 +40,7 @@ jobs:
       - name: Publish dotnet project
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
-          ls
-          cd obj
-          ls
-          cd ..
-          dotnet publish --no-build --no-restore
+          dotnet publish --no-build --no-restore --output ./output
+      - name: Create artifacts zip
+        run: zip -r artifacts.zip ./output
+          
