@@ -42,5 +42,14 @@ jobs:
           cd ${{matrix.TestOpenWeatherProject}}
           dotnet publish --no-build --no-restore --output ./output
       - name: Create artifacts zip
-        run: zip -r artifacts.zip ./output
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          ls
+          cd obj
+          ls
+          cd ..
+          cd bin
+          cd Debug
+          cd net8.0
+          ls
           
