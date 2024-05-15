@@ -44,5 +44,5 @@ jobs:
       - name: Create artifacts zip
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
-          ls
+          zip -r artifacts.zip ./output
           
