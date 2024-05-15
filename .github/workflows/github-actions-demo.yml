@@ -45,11 +45,4 @@ jobs:
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
           ls
-          cd obj
-          ls
-          cd ..
-          cd bin
-          cd Debug
-          cd net8.0
-          ls
           
