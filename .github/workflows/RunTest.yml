@@ -1,0 +1,14 @@
+name: RunTest
+
+on:
+  push:
+    branches:
+      - unit
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  test-and-merge:
+    runs-on: ubuntu-latest
+    needs: BuildArtifacts
+    
