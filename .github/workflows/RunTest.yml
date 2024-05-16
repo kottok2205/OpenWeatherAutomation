@@ -1,11 +1,6 @@
 name: RunTest
 
 on:
-  push:
-    branches:
-      - unit
-  pull_request:
-    types: [opened, reopened]
   workflow_run:
     workflows: ["BuildArtifacts"]
     types:
