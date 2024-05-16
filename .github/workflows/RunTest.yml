@@ -6,9 +6,16 @@ on:
       - unit
   pull_request:
     types: [opened, reopened]
+  workflow_run:
+    workflows: ["BuildArtifacts"]
+    types:
+      - completed
 
 jobs:
   test-and-merge:
     runs-on: ubuntu-latest
-    needs: BuildArtifacts
-    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: check
+        run: echo "ФІВАПРОЛДЖ"
