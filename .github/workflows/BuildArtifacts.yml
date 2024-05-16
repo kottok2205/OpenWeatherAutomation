@@ -49,8 +49,7 @@ jobs:
           zip -r artifacts.zip ./output
   test-and-merge:
     runs-on: ubuntu-latest
+    needs: Build_artifacts
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: check
-        run: echo "ФІВАПРОЛДЖ"
