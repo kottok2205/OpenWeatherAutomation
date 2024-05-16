@@ -1,12 +1,14 @@
-name: GitHub Actions Demo
+name: BuildArtifacts
 
 on:
   push:
     branches:
       - unit
+  pull_request:
+    types: [opened, reopened]
 
 jobs:
-  test-and-merge:
+  BuildArtifacts:
     runs-on: ubuntu-latest
     strategy:
       matrix:
