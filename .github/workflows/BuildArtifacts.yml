@@ -66,7 +66,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: my-artifact
-          path: ${{matrix.TestOpenWeatherProject}}/artifacts.zip
+          path: ${{matrix.TestOpenWeatherProject}}
       - name: unzip
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
