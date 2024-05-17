@@ -47,6 +47,7 @@ jobs:
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
           zip -r artifacts.zip ./output
+          ls
   test-and-merge:
     runs-on: ubuntu-latest
     strategy:
@@ -59,6 +60,7 @@ jobs:
       - name: unzip
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
+          ls
           unzip artifacts.zip -d artifacts
       - name: Test
         run: |
