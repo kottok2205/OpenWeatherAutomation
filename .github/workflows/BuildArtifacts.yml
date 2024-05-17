@@ -48,6 +48,11 @@ jobs:
           cd ${{matrix.TestOpenWeatherProject}}
           zip -r artifacts.zip ./output
           ls
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: artifacts.zip
   test-and-merge:
     runs-on: ubuntu-latest
     strategy:
@@ -57,6 +62,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
       - name: unzip
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
