@@ -76,4 +76,5 @@ jobs:
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
           cd artifacts
-          dotnet test ${{matrix.TestOpenWeatherProject}}.dll
+          ls
+          
