@@ -49,7 +49,19 @@ jobs:
           zip -r artifacts.zip ./output
   test-and-merge:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        TestOpenWeatherProject: [OpenWeatherAutomation, OpenWeatherApiTest]
     needs: Build_artifacts
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: unzip
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          unzip artifacts.zip -d artifacts
+      - name: Test
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          cd artifacts
+          dotnet test ${{matrix.TestOpenWeatherProject}}.dll
