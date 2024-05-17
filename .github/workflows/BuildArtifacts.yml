@@ -76,5 +76,5 @@ jobs:
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
           cd artifacts
+          cd output
           ls
-          
