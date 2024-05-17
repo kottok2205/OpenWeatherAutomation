@@ -52,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: my-artifact
-          path: artifacts.zip
+          path: ${{matrix.TestOpenWeatherProject}}/artifacts.zip
   test-and-merge:
     runs-on: ubuntu-latest
     strategy:
