@@ -74,7 +74,5 @@ jobs:
           unzip artifacts.zip -d artifacts
       - name: Test
         run: |
-          cd ${{matrix.TestOpenWeatherProject}}
-          cd artifacts
-          cd output
-          ls
+          cd ${{matrix.TestOpenWeatherProject}}/artifacts/output
+          dotnet test ${{matrix.TestOpenWeatherProject}}.dll
