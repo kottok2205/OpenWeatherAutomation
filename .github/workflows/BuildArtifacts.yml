@@ -42,17 +42,17 @@ jobs:
       - name: Publish dotnet project
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
-          dotnet publish --no-build --no-restore --output ./output
+          dotnet publish --no-build --no-restore --output ./output${{matrix.TestOpenWeatherProject}}
       - name: Create artifacts zip
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
-          zip -r artifacts.zip ./output
+          zip -r artifacts${{matrix.TestOpenWeatherProject}}.zip ./output${{matrix.TestOpenWeatherProject}}
           ls
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
-          path: ${{matrix.TestOpenWeatherProject}}/artifacts.zip
+          name: my-artifact${{matrix.TestOpenWeatherProject}}
+          path: ${{matrix.TestOpenWeatherProject}}/artifacts${{matrix.TestOpenWeatherProject}}.zip
   test-and-merge:
     runs-on: ubuntu-latest
     strategy:
@@ -65,22 +65,22 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: my-artifact
+          name: my-artifact${{matrix.TestOpenWeatherProject}}
           path: ${{matrix.TestOpenWeatherProject}}
       - name: unzip
         run: |
           cd ${{matrix.TestOpenWeatherProject}}
           ls
-          unzip artifacts.zip -d artifacts
+          unzip artifacts${{matrix.TestOpenWeatherProject}}.zip -d artifacts${{matrix.TestOpenWeatherProject}}
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
       - name: Check
         run: |
-          cd ${{matrix.TestOpenWeatherProject}}/artifacts/output
+          cd ${{matrix.TestOpenWeatherProject}}/artifacts${{matrix.TestOpenWeatherProject}}/output${{matrix.TestOpenWeatherProject}}
           ls
       - name: Test
         run: |
-          cd ${{matrix.TestOpenWeatherProject}}/artifacts/output
+          cd ${{matrix.TestOpenWeatherProject}}/artifacts${{matrix.TestOpenWeatherProject}}/output${{matrix.TestOpenWeatherProject}}
           dotnet test ${{matrix.TestOpenWeatherProject}}.dll
