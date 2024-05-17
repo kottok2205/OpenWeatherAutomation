@@ -76,6 +76,10 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
+      - name: Check
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}/artifacts/output
+          ls
       - name: Test
         run: |
           cd ${{matrix.TestOpenWeatherProject}}/artifacts/output
