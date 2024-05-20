@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools;
-using Network = OpenQA.Selenium.DevTools.V124.Network;
-using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V124.DevToolsSessionDomains;
+using Network = OpenQA.Selenium.DevTools.V125.Network;
+using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V125.DevToolsSessionDomains;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.RegularExpressions;
