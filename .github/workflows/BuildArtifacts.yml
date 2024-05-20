@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - unit
+      - master
   pull_request:
     types: [opened, reopened]
 
