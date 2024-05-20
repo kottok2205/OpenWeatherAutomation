@@ -1,0 +1,90 @@
+name: BuildArtifacts
+
+on:
+  push:
+    branches:
+      - unit
+      - master
+  pull_request:
+    branches:
+      - unit
+      - master
+    types: [opened, reopened]
+
+jobs:
+  Build_artifacts:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        TestOpenWeatherProject: [OpenWeatherAutomation, OpenWeatherApiTest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - name: Install zip
+        run: sudo apt-get install zip -y
+
+      - name: Clean dotnet project
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          dotnet clean ${{matrix.TestOpenWeatherProject}}.csproj
+        
+      - name: Restore dotnet project
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          dotnet restore ${{matrix.TestOpenWeatherProject}}.csproj
+      - name: Build dotnet project
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          dotnet build ${{matrix.TestOpenWeatherProject}}.csproj --no-restore --configuration Release
+      - name: Publish dotnet project
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          dotnet publish --no-build --no-restore --output ./output${{matrix.TestOpenWeatherProject}}
+      - name: Create artifacts zip
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          zip -r artifacts${{matrix.TestOpenWeatherProject}}.zip ./output${{matrix.TestOpenWeatherProject}}
+          ls
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact${{matrix.TestOpenWeatherProject}}
+          path: ${{matrix.TestOpenWeatherProject}}/artifacts${{matrix.TestOpenWeatherProject}}.zip
+  test-and-merge:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        TestOpenWeatherProject: [OpenWeatherAutomation, OpenWeatherApiTest]
+    needs: Build_artifacts
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact${{matrix.TestOpenWeatherProject}}
+          path: ${{matrix.TestOpenWeatherProject}}
+      - name: unzip
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}
+          ls
+          unzip artifacts${{matrix.TestOpenWeatherProject}}.zip -d artifacts${{matrix.TestOpenWeatherProject}}
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - name: Check
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}/artifacts${{matrix.TestOpenWeatherProject}}/output${{matrix.TestOpenWeatherProject}}
+          ls
+      - name: Test
+        run: |
+          cd ${{matrix.TestOpenWeatherProject}}/artifacts${{matrix.TestOpenWeatherProject}}/output${{matrix.TestOpenWeatherProject}}
+          dotnet test ${{matrix.TestOpenWeatherProject}}.dll

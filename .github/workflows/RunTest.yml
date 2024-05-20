@@ -1,0 +1,16 @@
+name: RunTest
+
+on:
+  workflow_run:
+    workflows: ["BuildArtifacts"]
+    types:
+      - completed
+
+jobs:
+  test-and-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: check
+        run: echo "ФІВАПРОЛДЖ"
