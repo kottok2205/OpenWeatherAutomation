@@ -13,6 +13,7 @@ namespace PageObject
         protected static ChromeDriver Driver => BaseDriver.GetInstance();
 
         public By waitingLoaderSelector = By.CssSelector(".owm-loader-container");
+        public By waitOwmLoader = By.ClassName("owm-loader");
 
         public void WaitForPageLoadedOff(By element)
         {
