@@ -6,6 +6,9 @@ on:
       - unit
       - master
   pull_request:
+    branches:
+      - unit
+      - master
     types: [opened, reopened]
 
 jobs:
