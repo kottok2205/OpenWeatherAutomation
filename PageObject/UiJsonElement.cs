@@ -1,11 +1,10 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools;
-using Network = OpenQA.Selenium.DevTools.V124.Network;
-using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V124.DevToolsSessionDomains;
+using Network = OpenQA.Selenium.DevTools.V125.Network;
+using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V125.DevToolsSessionDomains;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace PageObject
 {
@@ -16,8 +15,8 @@ namespace PageObject
 
         public UiJsonElement()
         {
-            this.devTools = Driver as IDevTools;
-            this.domains = devTools.GetDevToolsSession().GetVersionSpecificDomains<DevToolsSessionDomains>();
+            devTools = Driver;
+            domains = devTools.GetDevToolsSession().GetVersionSpecificDomains<DevToolsSessionDomains>();
         }
 
         public async Task<string[]> GetDateArrayFromJsonAsync()
@@ -29,7 +28,6 @@ namespace PageObject
             }
 
             Driver.Navigate().GoToUrl(jsonUrl);
-            //await Task.Delay(5000); // Wait for page to load completely
 
             string responseData = Driver.FindElement(By.TagName("body")).Text;
             responseData = Regex.Replace(responseData, @"\s+", "");
@@ -39,7 +37,6 @@ namespace PageObject
 
         private async Task<string> FetchJsonUrlAsync()
         {
-            string jsonUrl = null;
             await domains.Network.Enable(new Network.EnableCommandSettings());
 
             var responseListener = new TaskCompletionSource<string>();
@@ -52,7 +49,7 @@ namespace PageObject
             };
 
             Driver.Navigate().GoToUrl("https://openweathermap.org/city/703448");
-            //await Task.Delay(5000); // Ensure the network request is captured
+
             return await responseListener.Task;
         }
 
