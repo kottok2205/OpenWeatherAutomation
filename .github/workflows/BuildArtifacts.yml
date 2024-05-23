@@ -7,7 +7,6 @@ on:
       - master
   pull_request:
     branches:
-      - unit
       - master
     types: [opened, reopened]
 
